@@ -1,0 +1,2 @@
+class GameFormat < ApplicationRecord
+end
