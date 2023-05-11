@@ -1,4 +1,6 @@
 class Api::V1::SessionsController < ApplicationController
+  before_action :require_client_key
+
   def new_session
   end
 
@@ -16,6 +18,6 @@ class Api::V1::SessionsController < ApplicationController
   private
 
   def user_params
-    params.permit(:email, :password)
+    params.permit(:email, :password,)
   end
 end
