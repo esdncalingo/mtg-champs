@@ -3,12 +3,19 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def signin 
-    render json: 'your signin'
+    render json: 'your in'
+
   end
 
   def signup 
   end
 
   def signout
+  end
+
+  private
+
+  def user_params
+    params.permit(:email, :password)
   end
 end
