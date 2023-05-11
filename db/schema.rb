@@ -26,7 +26,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_014657) do
 
   create_table "events", force: :cascade do |t|
     t.integer "user_id"
-    t.text "location"
+    t.string "title"
+    t.text "description"
     t.datetime "schedule"
     t.integer "game_format_id"
     t.datetime "created_at", null: false
@@ -35,18 +36,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_014657) do
 
   create_table "game_formats", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "participants", force: :cascade do |t|
+    t.integer "event_id"
     t.integer "user_id"
     t.integer "deck_id"
     t.string "status"
-    t.integer "event_id"
     t.string "rank"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -60,15 +57,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_014657) do
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "nickname"
-    t.boolean "active"
-    t.integer "role_id"
+    t.boolean "active", default: false
+    t.integer "role_id", default: 1
     t.string "password"
     t.string "token"
     t.datetime "created_at", null: false

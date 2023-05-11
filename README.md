@@ -30,16 +30,14 @@ User (Player)
 •	Can check events available
 •	Can create deck (w/ sideboard depends on game format)
 •	Can check his/her match history
-•	Can create an events
-•	Can check players who want to join the event
-  o	Can view their deck/sideboards for the match
 •	Can buy/sell cards (deck or singles)
 •	Can view card stores/sellers
 
-Shop Owner
-•	Can create account
+Host
 •	Can create an events
 •	Can check players who want to join the event
   o	Can view their deck/sideboards for the match
 •	Can assign players in the pod
+
+Shop Owner
 •	Can have a page with their store details
