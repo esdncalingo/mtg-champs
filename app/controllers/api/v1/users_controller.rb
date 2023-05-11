@@ -5,10 +5,7 @@ class Api::V1::UsersController < ApplicationController
 
   def create 
     User.create(user_params)
-    
-      
     render json: 'success'
-    
   end
 
   def edit
