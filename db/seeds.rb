@@ -11,12 +11,12 @@ GameFormat.create(name: 'commander')
 GameFormat.create(name: 'oathbreaker')
 
 # Initial Users
-User.create(email: 'daniel@email', nickname: 'daniel', password: '12345678')
-User.create(email: 'anthony@email', nickname: 'anthony', password: '12345678')
-User.create(email: 'mark@email', nickname: 'mark', password: '12345678')
-User.create(email: 'john@email', nickname: 'john', password: '12345678')
-User.create(email: 'vivian@email', nickname: 'vivian', password: '12345678')
-User.create(email: 'ronaldo@email', nickname: 'ronaldo', password: '12345678')
+User.create_account(email: 'daniel@email.com', nickname: 'daniel', password: '12345678')
+User.create_account(email: 'anthony@email.com', nickname: 'anthony', password: '12345678')
+User.create_account(email: 'mark@email.com', nickname: 'mark', password: '12345678')
+User.create_account(email: 'john@email.com', nickname: 'john', password: '12345678')
+User.create_account(email: 'vivian@email.com', nickname: 'vivian', password: '12345678')
+User.create_account(email: 'ronaldo@email.com', nickname: 'ronaldo', password: '12345678')
 
 # Initial Decks for Daniel
 user = User.find(1)

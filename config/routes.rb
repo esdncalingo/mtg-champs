@@ -3,14 +3,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  # /api/v1/...
   namespace :api do
     namespace :v1 do
+      scope :auth do
         # Session routes
-        get "/signin" => "sessions#signin"
-
-        # User routes
-        resources :users
+        post '/' => 'sessions#signup'
+        get '/signin' => 'sessions#signin'
+      end
     end
   end
-
 end
