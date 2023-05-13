@@ -19,6 +19,7 @@ class Api::V1::DecksController < ApplicationController
     end
   end
 
+  # PATCH /api/v1/deck
   def update
     if @deck.update(deck_params)
       render json: { success: 'ok', deck: @deck }, status: :ok
@@ -34,6 +35,7 @@ class Api::V1::DecksController < ApplicationController
     end
   end
 
+  # GET /api/v1/deck/cards
   def cards
     render json: { cards: @deck.cards }, status: :ok
   end
