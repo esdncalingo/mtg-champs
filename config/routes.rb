@@ -12,6 +12,11 @@ Rails.application.routes.draw do
         post '/' => 'sessions#signup'
         get '/signin' => 'sessions#signin'
       end
+      resource :deck, only: %w(show create update destroy) do
+        member do
+          get :cards
+        end
+      end
     end
   end
 end

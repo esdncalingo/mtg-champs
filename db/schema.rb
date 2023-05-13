@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_051828) do
     t.string "name"
     t.text "cards", default: [], array: true
     t.text "sideboard", default: [], array: true
-    t.integer "game_format_id"
+    t.string "game_format"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_051828) do
     t.string "title"
     t.text "description"
     t.datetime "schedule"
-    t.integer "game_format_id"
+    t.string "game_format"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,10 +68,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_051828) do
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "nickname"
-    t.boolean "active", default: false
-    t.integer "role_id", default: 1
+    t.string "role", default: "player"
     t.string "password"
-    t.string "token"
+    t.string "access_token"
+    t.datetime "expiration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

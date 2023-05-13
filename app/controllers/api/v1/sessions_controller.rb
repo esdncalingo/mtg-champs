@@ -1,13 +1,12 @@
 class Api::V1::SessionsController < ApplicationController
   before_action :require_client_key
 
-  # POST /auth/signin
+  # GET /auth/signin
   def signin
     if request.request_parameters[:email].present? && request.request_parameters[:password].present?
-      @user, @token = User.generate_token(user_params)
+      @user, @access_token = User.generate_token(user_params)
       if @user.present?
-        response.headers['access_token'] = @token
-        render json: { success: 'ok' }, status: :ok
+        render json: { success: 'ok', token: @access_token }, status: :ok
       else
         render json: { error: ['Invalid username and password'] }, status: :unprocessable_entity
       end

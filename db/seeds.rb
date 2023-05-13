@@ -26,7 +26,7 @@ user.decks.create(
 					[4, 'Golgari Charm'],[4, 'Murder'],[4, 'Lotus Cobra'],
 					[4, 'Tainted Strike'],[4, 'Reanimate Dead'],[4, 'Swamplord'],
 					[4, 'Doom Blade'],[4, 'Zombie'],[4, 'Snake']],
-	game_format_id: 1)
+	game_format: 'modern')
 
 user.decks.create(
 	name: 'simic toxic', 
@@ -36,7 +36,7 @@ user.decks.create(
 					[3, 'Stormchaser Drake'],[2, 'Bloated Contaminator'],[1, 'March of Burgeoning Life'],
 					[4, 'March of Swirling Mist'],[4, 'Slip Out the Back'],[1, 'Thirsting Roots'],
 					[4, 'Timely Interference'],[4, 'Tyvars Stand']],
-	game_format_id: 1)
+	game_format: 'modern')
 
 # Initial Deck for Anthony
 user2 = User.find(2)
@@ -47,7 +47,7 @@ user2.decks.create(
 					[2, 'Archangel of Thune'],[4, 'Champion of the Parish'],[4, 'Fiend Hunter'],
 					[4, 'Knight of the White Orchid'],[4, 'Restoration Angel'],[4, 'Soul Warden'],
 					[4, 'Soul Attendant']], 
-	game_format_id: 1)
+	game_format: 'modern')
 
 # Initial Deck for Mark
 user3 = User.find(3)
@@ -58,11 +58,11 @@ user3.decks.create(
 					[4, 'Gwenna,Eyes of Gaea'],[3, 'Rhonas the Indomitable'],[4, 'Shakedown Heavy'],
 					[4, 'Steel Leaf Champion'],[2, 'Traxos,Scourge of Kroog'],[2, 'Tyvar,Jubilant Brawler'],
 					[4, 'Collected Company'],[3, 'Bontus Monument'],[3, 'Relic of Legends']],
-	game_format_id: 1)
+	game_format: 'modern')
 
 # Daniel Hosting an Event
 user.events.create(
   title: 'Modern Tournament',
   description: 'competitive tourney',
   schedule: 'Wed, 10 May 2023',
-  game_format_id: 1)
+  game_format: 'modern')
