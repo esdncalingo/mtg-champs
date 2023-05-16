@@ -5,7 +5,7 @@ class Api::V1::DecksController < ApplicationController
 
   # GET /api/v1/deck
   def show
-    render json: { data: @user.decks }, status: :ok
+    render json: @user.decks, status: :ok
   end
 
   # POST /api/v1/deck

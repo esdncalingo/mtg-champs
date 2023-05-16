@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       scope :auth do
         # Session routes
         post '/' => 'sessions#signup'
-        get '/signin' => 'sessions#signin'
+        post '/signin' => 'sessions#signin'
       end
       resource :deck, only: %w(show create update destroy) do
         member do
