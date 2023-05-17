@@ -16,6 +16,4 @@ test:
 
 production:
   <<: *default
-  database: mtg_champs_production
-  username: mtg_champs
-  password: <%= ENV["MTG_CHAMPS_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
