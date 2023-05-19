@@ -11,7 +11,7 @@ class Api::V1::DecksController < ApplicationController
   # POST /api/v1/deck
   def create
     @deck = @user.decks.new(deck_params)
-
+    
     if @deck.save
       render json: { success: 'ok', deck: @deck }, status: :ok
     else
@@ -43,7 +43,7 @@ class Api::V1::DecksController < ApplicationController
   private
 
   def deck_params
-    params.permit(:name, :cards, :sideboard, :game_format)
+    params.permit(:name, :game_format, sideboard: {}).merge(cards: params[:cards])
   end
 
   def set_deck
