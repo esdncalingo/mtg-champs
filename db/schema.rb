@@ -23,8 +23,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_051828) do
   create_table "decks", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
-    t.text "cards", default: [], array: true
-    t.text "sideboard", default: [], array: true
+    t.jsonb "cards", default: {}, null: false
+    t.jsonb "sideboard", default: {}, null: false
     t.string "game_format"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,10 +38,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_051828) do
     t.string "game_format"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "game_formats", force: :cascade do |t|
-    t.string "name"
   end
 
   create_table "participants", force: :cascade do |t|
@@ -59,10 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_051828) do
     t.text "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
