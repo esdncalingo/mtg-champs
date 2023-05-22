@@ -4,6 +4,7 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def create
+
   end
 
   def show
@@ -13,6 +14,14 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def find_event
+  end
+
+  def event_params
   end
 
 end
