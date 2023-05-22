@@ -1,7 +1,7 @@
 class Api::V1::DecksController < ApplicationController
   before_action :require_client_key
   before_action :require_user_token
-  before_action :set_deck, only: [:update, :destroy, :cards]
+  before_action :set_deck, only: [:update, :destroy, :cards, :view]
 
   # GET /api/v1/deck
   def show
@@ -35,6 +35,11 @@ class Api::V1::DecksController < ApplicationController
     end
   end
 
+  # GET /api/v1/deck/:id/view
+  def view
+    render json: { deck: @deck }, status: :ok
+  end
+
   # GET /api/v1/deck/cards
   def cards
     render json: { cards: @deck.cards }, status: :ok
@@ -47,6 +52,6 @@ class Api::V1::DecksController < ApplicationController
   end
 
   def set_deck
-    @deck = @user.decks.find(request.request_parameters[:id])
+    @deck = @user.decks.find(params[:id])
   end
 end
