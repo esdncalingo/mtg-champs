@@ -5,7 +5,7 @@ class Api::V1::EventsController < ApplicationController
 
   # GET /api/v1/event
   def show
-    render json: @user.events, status: :ok
+    render json: @user.events.reverse(), status: :ok
   end
 
   # POST /api/v1/event
@@ -13,7 +13,7 @@ class Api::V1::EventsController < ApplicationController
     @event = @user.events.new(event_params)
 
     if @event.save
-      render json: { success: 'ok', @event }, status: :ok
+      render json: { success: 'ok', event: @event }, status: :ok
     else
       render json: { error: @event.errors }, status: :unprocessable_entity
     end
