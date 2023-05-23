@@ -1,9 +1,8 @@
 class CreateParticipants < ActiveRecord::Migration[7.0]
   def change
     create_table :participants do |t|
-      t.integer :event_id
-      t.integer :user_id
-      t.integer :deck_id
+      t.references :user, null: false, foreign_key: true
+      t.references :event, null: false, foreign_key: true
       t.string :status
       t.string :rank
     end

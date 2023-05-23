@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
+  # action cable server
+  mount ActionCable.server => '/participantscable'
+
   # /api/v1/...
   namespace :api do
     namespace :v1 do
@@ -21,6 +24,7 @@ Rails.application.routes.draw do
       end
       # Event routes
       resource :event do
+        resource :participant
       end
     end
   end
