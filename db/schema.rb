@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_11_051828) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_23_013455) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,21 +31,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_051828) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.integer "user_id"
     t.string "title"
     t.text "description"
     t.datetime "schedule"
     t.string "game_format"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "participants", force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "user_id"
-    t.integer "deck_id"
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
     t.string "status"
     t.string "rank"
+    t.index ["event_id"], name: "index_participants_on_event_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -55,6 +57,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_051828) do
     t.text "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "submitted_decks", force: :cascade do |t|
+    t.bigint "participant_id", null: false
+    t.string "name"
+    t.jsonb "cards"
+    t.jsonb "sideboard"
+    t.string "game_format"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["participant_id"], name: "index_submitted_decks_on_participant_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,4 +81,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_051828) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "events", "users"
+  add_foreign_key "participants", "events"
+  add_foreign_key "participants", "users"
+  add_foreign_key "submitted_decks", "participants"
 end
