@@ -5,7 +5,7 @@ class Api::V1::EventsController < ApplicationController
 
   # GET /api/v1/event
   def show
-    render json: @user.events.reverse(), status: :ok
+    render json: Event.all.reverse(), status: :ok
   end
 
   # POST /api/v1/event
@@ -35,10 +35,21 @@ class Api::V1::EventsController < ApplicationController
     end
   end
 
+  # GET /api/v1/event/:id/view
+  def view
+    @event = Event.includes(:user).where(id: params[:id])
+    if @event.present?
+      @name = @event.pluck(:nickname)
+      render json: { event: @event, created_by: @name}, status: :ok
+    else 
+      render json: { error: 'Not Found' }, status: :not_found
+    end
+  end
+
   private
 
   def find_event
-    @event = @user.event.find(params[:id])
+    @event = @user.events.find(params[:id])
   end
 
   def event_params

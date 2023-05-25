@@ -37,7 +37,21 @@ class Api::V1::DecksController < ApplicationController
 
   # GET /api/v1/deck/:id/view
   def view
-    render json: { deck: @deck }, status: :ok
+    if @deck.present?
+      render json: { deck: @deck }, status: :ok
+    else
+      render json: { error: 'Not found' }, status: :not_found
+    end
+  end
+
+  # GET /api/v1/deck/:game_format
+  def by_format
+    @deck = @user.decks.where(game_format: params[:game_format])
+    if @deck.present?
+      render json: { deck: @deck }, status: :ok
+    else 
+      render json: { error: 'Not found' }, status: :not_found
+    end
   end
 
   # GET /api/v1/deck/cards
@@ -48,7 +62,7 @@ class Api::V1::DecksController < ApplicationController
   private
 
   def deck_params
-    params.permit(:name, :game_format, sideboard: {}).merge(cards: params[:cards])
+    params.permit(:name, :game_format).merge(cards: params[:cards], sideboard: params[:sideboard])
   end
 
   def set_deck

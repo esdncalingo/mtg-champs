@@ -4,7 +4,7 @@ class CreateDecks < ActiveRecord::Migration[7.0]
       t.integer :user_id
       t.string :name
       t.jsonb :cards, null: false, default: {}
-      t.jsonb :sideboard, null: false, default: {}
+      t.jsonb :sideboard, default: {}
       t.string :game_format
 
       t.timestamps

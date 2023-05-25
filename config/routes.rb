@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   # action cable server
-  mount ActionCable.server => '/participantscable'
+  mount ActionCable.server => '/actioncable'
 
   # /api/v1/...
   namespace :api do
@@ -20,10 +20,14 @@ Rails.application.routes.draw do
         member do
           get :cards
           get ':id/view' => 'decks#view'
+          get ':game_format' => 'decks#by_format'
         end
       end
       # Event routes
       resource :event do
+        member do
+          get ':id/view' => 'events#view'
+        end
         resource :participant
       end
     end
