@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_23_013455) do
     t.integer "user_id"
     t.string "name"
     t.jsonb "cards", default: {}, null: false
-    t.jsonb "sideboard", default: {}, null: false
+    t.jsonb "sideboard", default: {}
     t.string "game_format"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_23_013455) do
   create_table "participants", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "event_id", null: false
-    t.string "status"
+    t.string "status", default: "pending"
     t.string "rank"
     t.index ["event_id"], name: "index_participants_on_event_id"
     t.index ["user_id"], name: "index_participants_on_user_id"
