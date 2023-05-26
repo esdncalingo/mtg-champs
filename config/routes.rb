@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       resource :event do
         member do
           get ':id/view' => 'events#view'
+          get :host_event
         end
         resource :participant
       end

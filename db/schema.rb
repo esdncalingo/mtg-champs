@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_23_013455) do
     t.text "description"
     t.datetime "schedule"
     t.string "game_format"
+    t.boolean "finished", default: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
