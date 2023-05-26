@@ -5,6 +5,7 @@ class CreateEvents < ActiveRecord::Migration[7.0]
       t.text :description
       t.datetime :schedule
       t.string :game_format
+      t.boolean :finished, default: false
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
