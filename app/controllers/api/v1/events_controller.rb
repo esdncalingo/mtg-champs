@@ -5,7 +5,7 @@ class Api::V1::EventsController < ApplicationController
 
   # GET /api/v1/event
   def show
-    render json: Event.all.reverse(), status: :ok
+    render json: Event.where('events.schedule >= ?', Date.today ).reverse(), status: :ok
   end
 
   # POST /api/v1/event
@@ -44,6 +44,11 @@ class Api::V1::EventsController < ApplicationController
     else 
       render json: { error: 'Not Found' }, status: :not_found
     end
+  end
+
+  def host_event
+    @event = @user.events.where('events.finished = ?', false)
+    render json: { event: @event }, status: :ok
   end
 
   private
