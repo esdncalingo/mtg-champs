@@ -32,6 +32,8 @@ class Api::V1::EventsController < ApplicationController
   def destroy
     if @event.destroy
       render json: { success: 'Event removed' }, status: :ok
+    else
+      render json: { error: 'Not found' }, status: :not_found
     end
   end
 

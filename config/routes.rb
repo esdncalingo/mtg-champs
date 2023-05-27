@@ -29,7 +29,12 @@ Rails.application.routes.draw do
           get ':id/view' => 'events#view'
           get :host_event
         end
-        resource :participant
+        resource :participant do
+          member do
+            get :deck_submit
+            get :approved
+          end
+        end
       end
     end
   end
