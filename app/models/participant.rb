@@ -25,8 +25,8 @@ class Participant < ApplicationRecord
     end
   end
 
-  def self.approved(params)
-    @event = Event.find(params[:id])
+  def self.approved(id)
+    @event = Event.find(id)
     @participants = @event.users
                        .where(participants: { status: 'approved' })
                        .select(:id, :nickname)
