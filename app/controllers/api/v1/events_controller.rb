@@ -5,7 +5,18 @@ class Api::V1::EventsController < ApplicationController
 
   # GET /api/v1/event
   def show
-    render json: Event.where('events.schedule >= ?', Date.today ).reverse(), status: :ok
+    @events = Event.includes(:users)
+               .where('events.schedule >= ?', Date.today)
+               .order(schedule: :desc)
+    event_data = @events.map do |event|
+      {
+        id: event.id,
+        title: event.title,
+        schedule: event.schedule,
+        participants: event.users.where(participants: { status: 'approved' }).pluck(:nickname)
+      }
+    end
+    render json: { events: event_data }, status: :ok
   end
 
   # POST /api/v1/event

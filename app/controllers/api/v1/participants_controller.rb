@@ -49,13 +49,7 @@ class Api::V1::ParticipantsController < ApplicationController
 
   # GET /api/v1/event/participant/approved
   def approved
-    @event = Event.find(params[:id])
-    @participants = @event.users
-                       .where(participants: { status: 'approved' })
-                       .select(:id, :nickname)
-                       .as_json(only: [:id, :nickname], root: false)
-                       .map { |participant| { name: participant['nickname'], id: participant['id'], isWinner: false, resultText: '' } }
-  
+    @participant = Participant.approved(params[:id])
     if @participants.present?
       render json: { participants: @participants }, status: :ok
     else
