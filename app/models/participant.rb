@@ -24,5 +24,16 @@ class Participant < ApplicationRecord
       }
     end
   end
+
+  def self.approved(params)
+    @event = Event.find(params[:id])
+    @participants = @event.users
+                       .where(participants: { status: 'approved' })
+                       .select(:id, :nickname)
+                       .as_json(only: [:id, :nickname], root: false)
+                       .map { |participant| { name: participant['nickname'], id: participant['id'], isWinner: false, resultText: '' } }
+    
+    return @participants
+  end
  
 end
