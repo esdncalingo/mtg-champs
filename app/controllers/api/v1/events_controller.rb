@@ -13,6 +13,7 @@ class Api::V1::EventsController < ApplicationController
         id: event.id,
         title: event.title,
         schedule: event.schedule,
+        game_format: event.game_format,
         participants: event.users.where(participants: { status: 'approved' }).pluck(:nickname)
       }
     end

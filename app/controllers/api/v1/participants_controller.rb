@@ -49,7 +49,7 @@ class Api::V1::ParticipantsController < ApplicationController
 
   # GET /api/v1/event/participant/approved
   def approved
-    @participant = Participant.approved(params[:id])
+    @participants = Participant.approved(params[:id])
     if @participants.present?
       render json: { participants: @participants }, status: :ok
     else
