@@ -24,7 +24,7 @@ module MtgChamps
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
-    config.factory_bot.definition_file_paths = ["custom/factories"]
+    
     config.api_only = true
   end
 end
