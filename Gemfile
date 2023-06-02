@@ -16,6 +16,7 @@ gem "bootsnap", require: false
 gem "rack-cors"
 gem 'faker'
 gem 'simplecov', require: false, group: :test
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
