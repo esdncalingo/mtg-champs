@@ -8,6 +8,7 @@ gem "puma", "~> 5.0"
 gem 'pry-byebug'
 # gem "jbuilder"
 gem "redis", "~> 4.0"
+gem 'hiredis'
 # gem "kredis"
 gem "bcrypt", "~> 3.1.7"
 gem 'jwt', '~> 2.7'
