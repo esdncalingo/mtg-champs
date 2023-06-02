@@ -5,7 +5,6 @@ class Api::V1::ParticipantsController < ApplicationController
   before_action :set_participant, only: [:update, :destroy, :deck_submit]
 
   def show
-    # @event = Event.find(params[:id])
     @participants = Participant.event_participants(params[:id])
     render json: { participant: @participants }, status: :ok
   end
