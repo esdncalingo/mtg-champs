@@ -16,9 +16,10 @@ module Authentication
 
     def self.generate_token(parameters)
       @user = find_by(email: parameters[:email])
-      @access_token = SecureRandom.hex(20)
-      @user.update(access_token: @access_token)
+      
       if @user.present?
+        @access_token = SecureRandom.hex(20)
+        @user.update(access_token: @access_token)
         return @user, @access_token if Password.new(@user.password) == parameters[:password]
       end
     end
